@@ -19,11 +19,11 @@ def _training_model(model):
 
     return randint(1, 10)
 
-    with DAG("my_dag",
-        start_date        = datetime(2021, 1 ,1), # start date, the 1st of January 2021
-        schedule_interval = '@daily',             # Cron expression, here it is a preset of Airflow, @daily means once every day.
-        catchup           = False                 # Catchup 
-        ) as dag:
+with DAG("my_dag",
+    start_date        = datetime(2021, 1 ,1), # start date, the 1st of January 2021
+    schedule_interval = '@daily',             # Cron expression, here it is a preset of Airflow, @daily means once every day.
+    catchup           = False                 # Catchup 
+    ) as dag:
 
 training_model_tasks = [
     PythonOperator(
